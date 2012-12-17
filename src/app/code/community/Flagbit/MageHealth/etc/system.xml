@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config>
     <sections>
-        <magehealth translate="label" module="core">
+        <magehealth translate="label" module="magehealth">
             <label>MageHealth</label>
             <tab>advanced</tab>
             <frontend_type>text</frontend_type>
@@ -10,35 +10,36 @@
             <show_in_website>0</show_in_website>
             <show_in_store>0</show_in_store>
             <groups>
-                <log translate="label" module="log">
+                <log translate="label" module="magehealth">
                     <label>Log Rotation (var/log/)</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>200</sort_order>
+                    <sort_order>10</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>0</show_in_website>
                     <show_in_store>0</show_in_store>
                     <fields>
-                        <clean_after_day translate="label">
-                            <label>Save Log, Days</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>0</show_in_website>
-                            <show_in_store>0</show_in_store>
-                        </clean_after_day>
                         <enabled translate="label">
                             <label>Enable Log Cleaning</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>2</sort_order>
+                            <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </enabled>
+                        <clean_after_day translate="label">
+                            <label>Save Log</label>
+                            <comment>In days.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </clean_after_day>
                         <time translate="label">
                             <label>Start Time</label>
                             <frontend_type>time</frontend_type>
-                            <sort_order>3</sort_order>
+                            <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
@@ -48,13 +49,68 @@
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_cron_frequency</source_model>
                             <backend_model>magehealth/system_config_backend_log</backend_model>
-                            <sort_order>4</sort_order>
+                            <sort_order>40</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </frequency>
                     </fields>
                 </log>
+                <quote translate="label" module="magehealth">
+                    <label>Quotes Cleaner</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Quote Cleaning</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <older_than>
+                            <label>Clean quotes older than</label>
+                            <comment>In days. (Minimum number of days is 7)</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </older_than>
+                        <limit>
+                            <label>Limit number of quotes to clear per cron run</label>
+                            <comment>(Maximum number is 50000)</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </limit>
+                        <time translate="label">
+                            <label>Start Time</label>
+                            <frontend_type>time</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </time>
+                        <frequency translate="label">
+                            <label>Frequency</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_cron_frequency</source_model>
+                            <backend_model>magehealth/system_config_backend_log</backend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </frequency>
+                    </fields>
+                </quote>
             </groups>
         </magehealth>
     </sections>

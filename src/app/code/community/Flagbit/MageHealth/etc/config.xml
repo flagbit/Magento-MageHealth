@@ -9,8 +9,12 @@
         <models>
             <magehealth>
                 <class>Flagbit_MageHealth_Model</class>
+                <resourceModel>cron_resource</resourceModel>
             </magehealth>
         </models>
+        <cron_resource>
+            <class>Flagbit_MageHealth_Model_Resource</class>
+        </cron_resource>
         <helpers>
             <magehealth>
                 <class>Flagbit_MageHealth_Helper</class>
@@ -25,6 +29,13 @@
                 <time/>
                 <frequency>D</frequency>
             </log>
+            <quote>
+                <older_than>30</older_than>
+                <limit>5000</limit>
+                <enabled>0</enabled>
+                <time/>
+                <frequency>D</frequency>
+            </quote>
         </magehealth>
     </default>
     <crontab>
@@ -34,6 +45,11 @@
                     <model>magehealth/cron::logClean</model>
                 </run>
             </magehealth_log_clean>
+            <magehealth_quote_clean>
+                <run>
+                    <model>magehealth/cron::quoteClean</model>
+                </run>
+            </magehealth_quote_clean>
         </jobs>
     </crontab>
 </config>

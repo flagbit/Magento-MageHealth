@@ -1,6 +1,7 @@
 <?php
 
-class Flagbit_MageHealth_Model_Log {
+class Flagbit_MageHealth_Model_Log
+{
 
     const XML_PATH_LOG_ROTATE_CLEAN_AFTER_DAY            = 'magehealth/log/clean_after_day';
 
