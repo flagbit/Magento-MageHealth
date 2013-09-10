@@ -42,4 +42,22 @@ class Flagbit_MageHealth_Model_Cron extends Mage_Core_Model_Abstract
         return $this;
     }
 
+    /**
+     * Clean logs
+     *
+     * @return Mage_Log_Model_Cron
+     */
+    public function dataflowClean()
+    {
+        if (Mage::getStoreConfigFlag(self::XML_PATH_QUOTE_CLEAN_ENABLED)) {
+            try {
+                Mage::getModel('magehealth/dataflow')->clean();
+            }
+            catch (Exception $e) {
+                Mage::logException($e);
+            }
+        }
+        return $this;
+    }
+
 }

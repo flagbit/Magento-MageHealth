@@ -50,6 +50,11 @@
                     <model>magehealth/cron::quoteClean</model>
                 </run>
             </magehealth_quote_clean>
+            <magehealth_dataflow_clean>
+                <run>
+                    <model>magehealth/cron::dataflowClean</model>
+                </run>
+            </magehealth_dataflow_clean>
         </jobs>
     </crontab>
 </config>
