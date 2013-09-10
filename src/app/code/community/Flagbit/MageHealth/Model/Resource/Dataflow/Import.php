@@ -12,17 +12,23 @@ class Flagbit_MageHealth_Model_Resource_Dataflow_Import extends Mage_Dataflow_Mo
     }
 
     /**
-     * clean Dataflow Import Tables
+     * clean Dataflow Imports
      *
+     * @param $olderThan
+     * @param int $limit
      * @return int
      */
-    public function clean()
+    public function clean($olderThan, $limit = 5000)
     {
         $writeConnection = $this->_getWriteAdapter();
 
-        $sql = 'TRUNCATE TABLE '.$this->getMainTable();
-        $stmt = $writeConnection->query($sql);
+        $sql = sprintf('DELETE FROM %s WHERE updated_at < DATE_SUB(Now(), INTERVAL %s DAY) LIMIT %s',
+            $writeConnection->quoteIdentifier($this->getMainTable(), true),
+            max(intval($olderThan), 7),
+            min(intval($limit), 50000)
+        );
 
+        $stmt = $writeConnection->query($sql);
         return $stmt->rowCount();
     }
 }

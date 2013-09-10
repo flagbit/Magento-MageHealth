@@ -36,6 +36,12 @@
                 <time/>
                 <frequency>D</frequency>
             </quote>
+            <dataflow>
+                <older_than>30</older_than>
+                <enabled>0</enabled>
+                <time/>
+                <frequency>D</frequency>
+            </dataflow>
         </magehealth>
     </default>
     <crontab>
