@@ -22,8 +22,9 @@ class Flagbit_MageHealth_Model_Resource_Dataflow_Import extends Mage_Dataflow_Mo
     {
         $writeConnection = $this->_getWriteAdapter();
 
-        $sql = sprintf('DELETE FROM %s WHERE updated_at < DATE_SUB(Now(), INTERVAL %s DAY) LIMIT %s',
+        $sql = sprintf('DELETE FROM %s where batch_id IN(select batch_id from %s where created_at < DATE_SUB(Now(), INTERVAL %s DAY)) LIMIT %s',
             $writeConnection->quoteIdentifier($this->getMainTable(), true),
+            $writeConnection->quoteIdentifier($this->getTable('dataflow/batch'), true),
             max(intval($olderThan), 7),
             min(intval($limit), 50000)
         );
