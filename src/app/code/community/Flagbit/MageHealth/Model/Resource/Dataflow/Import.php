@@ -18,7 +18,7 @@ class Flagbit_MageHealth_Model_Resource_Dataflow_Import extends Mage_Dataflow_Mo
      * @param int $limit
      * @return int
      */
-    public function clean($olderThan, $limit = 5000)
+    public function clean($olderThan = 1, $limit = 5000)
     {
         $writeConnection = $this->_getWriteAdapter();
 
