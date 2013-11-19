@@ -11,12 +11,11 @@ class Flagbit_MageHealth_Model_Dataflow_Import extends Mage_Core_Model_Abstract
     /**
      * clean quotes
      *
-     * @return Flagbit_MageHealth_Model_Dataflow_Import
+     * @return int
      */
     public function clean() {
 
-        $this->getResource()->clean();
-        return $this;
+        return $this->getResource()->clean();
     }
 
 }

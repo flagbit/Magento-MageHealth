@@ -14,15 +14,14 @@ class Flagbit_MageHealth_Model_Quote extends Mage_Core_Model_Abstract
     /**
      * clean quotes
      *
-     * @return Flagbit_MageHealth_Model_Quote
+     * @return int
      */
     public function clean() {
 
-       $this->getResource()->clean(
+       return $this->getResource()->clean(
            Mage::getStoreConfig(self::XML_PATH_QUOTE_CLEAN_OLDER_THAN),
            Mage::getStoreConfig(self::XML_PATH_QUOTE_CLEAN_LIMIT)
        );
-       return $this;
    }
 
 }

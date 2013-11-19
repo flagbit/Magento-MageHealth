@@ -7,11 +7,14 @@ class Flagbit_MageHealth_Model_Log
 
     /**
      * rotate logfiles
+     *
+     * @return int
      */
     public function rotate()
     {
         $logdir = Mage::getBaseDir('log');
         $dirObject = new DirectoryIterator($logdir);
+        $fileCounter = 0;
 
         /* @var $fileObject DirectoryIterator */
         foreach($dirObject as $fileObject){
@@ -25,6 +28,7 @@ class Flagbit_MageHealth_Model_Log
                     if($this->gzCompressFile($fileObject->getPathname().'.tmp', $logdir.DS.$fileObject->getFilename().'-'.date('Ymd').'.gz')){
                         unlink($fileObject->getPathname().'.tmp');
                     }
+                    $fileCounter++;
                     break;
 
                 case 'gz':
@@ -33,9 +37,11 @@ class Flagbit_MageHealth_Model_Log
                             unlink($fileObject->getPathname());
                         }
                     }
+                    $fileCounter++;
                     break;
             }
         }
+        return $fileCounter;
     }
 
 
