@@ -9,12 +9,12 @@
         <models>
             <magehealth>
                 <class>Flagbit_MageHealth_Model</class>
-                <resourceModel>cron_resource</resourceModel>
+                <resourceModel>magehealth_resource</resourceModel>
             </magehealth>
+            <magehealth_resource>
+                <class>Flagbit_MageHealth_Model_Resource</class>
+            </magehealth_resource>
         </models>
-        <cron_resource>
-            <class>Flagbit_MageHealth_Model_Resource</class>
-        </cron_resource>
         <helpers>
             <magehealth>
                 <class>Flagbit_MageHealth_Helper</class>
