@@ -16,17 +16,15 @@ class Flagbit_MageHealth_Model_Resource_Quote extends Mage_Core_Model_Resource_D
      * clean Quotes
      *
      * @param $olderThan
-     * @param int $limit
      * @return int
      */
-     public function clean($olderThan, $limit = 5000)
+     public function clean($olderThan)
      {
         $writeConnection = $this->_getWriteAdapter();
 
-        $sql = sprintf('DELETE FROM %s WHERE updated_at < DATE_SUB(Now(), INTERVAL %s DAY) LIMIT %s',
+        $sql = sprintf('DELETE FROM %s WHERE updated_at < DATE_SUB(Now(), INTERVAL %s DAY)',
            $writeConnection->quoteIdentifier($this->getMainTable(), true),
-            max(intval($olderThan), 7),
-            min(intval($limit), 50000)
+            max(intval($olderThan), 7)
         );
 
         $stmt = $writeConnection->query($sql);
