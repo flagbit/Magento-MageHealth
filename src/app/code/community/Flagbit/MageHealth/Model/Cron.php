@@ -36,8 +36,7 @@ class Flagbit_MageHealth_Model_Cron extends Mage_Core_Model_Abstract
      */
     public function quoteClean(Mage_Cron_Model_Schedule $schedule)
     {
-        if (Mage::getStoreConfigFlag(self::XML_PATH_QUOTE_CLEAN_ENABLED)) {
-            $result = 0;
+        if (Mage::getStoreConfigFlag(self::XML_PATH_QUOTE_CLEAN_ENABLED)) {;
             try {
                 $result = Mage::getModel('magehealth/quote')->clean();
             }

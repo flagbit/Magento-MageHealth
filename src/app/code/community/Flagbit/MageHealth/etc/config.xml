@@ -31,7 +31,6 @@
             </log>
             <quote>
                 <older_than>30</older_than>
-                <limit>5000</limit>
                 <enabled>0</enabled>
                 <time/>
                 <frequency>D</frequency>
